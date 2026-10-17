@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The city that comes into focus — Istanbul, October 2024</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="map" role="application" aria-label="Map of Istanbul evening traffic speeds"></div>
+
+  <header class="masthead">
+    <h1>The city that comes into focus</h1>
+    <p class="lede">
+      Istanbul's weekday evening traffic, 17:00–20:00, revealed one evening at a time.
+      An area is drawn sharply only once its speed estimate stops moving.
+    </p>
+    <form class="search" id="searchForm" role="search">
+      <label for="search" class="sr">Find an area by its geohash code</label>
+      <input id="search" type="text" placeholder="Find an area, e.g. sxk691" autocomplete="off" spellcheck="false">
+      <p class="search-msg" id="searchMsg" aria-live="polite"></p>
+    </form>
+  </header>
+
+  <aside class="detail" id="detail" aria-live="polite" hidden></aside>
+
+  <section class="dock" aria-label="Timeline">
+    <div class="dock-top">
+      <div class="when">
+        <span class="when-date" id="whenDate">–</span>
+        <span class="when-sub">
+          <span id="whenWeekday">Loading</span>
+          <span id="whenOf" class="when-of"></span>
+        </span>
+      </div>
+
+      <button class="play" id="play" type="button" aria-label="Play the month">
+        <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
+        <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg>
+      </button>
+
+      <div class="modes" role="radiogroup" aria-label="How uncertainty is shown">
+        <button type="button" role="radio" data-mode="baseline" aria-checked="false"
+                title="Every area drawn as if its value were final">Raw</button>
+        <button type="button" role="radio" data-mode="fade" aria-checked="false"
+                title="Uncertain areas are faded">Fade</button>
+        <button type="button" role="radio" data-mode="focus" aria-checked="true"
+                title="Uncertain areas are blended into 5 km blocks">Focus</button>
+      </div>
+
+      <button class="peek" id="peek" type="button" aria-pressed="false">Hold to see the final month</button>
+    </div>
+
+    <div class="strip" id="strip" role="slider" tabindex="0"
+         aria-label="Evenings revealed" aria-valuemin="1" aria-valuemax="21" aria-valuenow="1"></div>
+
+    <div class="dock-bottom">
+      <p class="readout" id="readout">Loading the month…</p>
+      <div class="keys" aria-label="Legend">
+        <div class="ramp" id="ramp"></div>
+        <ul class="textures">
+          <li><span class="sw sw-sharp"></span>Settled</li>
+          <li><span class="sw sw-blend"></span>Still uncertain</li>
+          <li><span class="sw sw-lost"></span>Just lost focus</li>
+          <li><span class="sw sw-none"></span>No data</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

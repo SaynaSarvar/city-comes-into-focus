@@ -1,0 +1,6 @@
+data/raw/
+data/processed/traffic_density_202410.parquet
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.DS_Store
