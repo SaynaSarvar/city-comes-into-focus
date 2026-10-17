@@ -4,7 +4,7 @@
 
 A map of Istanbul's weekday evening traffic that is revealed one evening at a time. Each area is drawn sharply only once its speed estimate has stopped moving. Uncertain areas stay blurred, and areas whose traffic suddenly changes are flagged. The map shows what the data says and how far you can trust it.
 
-**[Open the live map →](https://YOUR-USERNAME.github.io/city-comes-into-focus/)**
+**[Open the live map →](https://saynasarvar.github.io/city-comes-into-focus/)**
 
 <p align="center">
   <img src="assets/03_focus_day5.png" width="900" alt="The map on 7 October, after five evenings: the congested centre is already sharp while highways are still blended">
